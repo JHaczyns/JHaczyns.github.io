@@ -1,5 +1,4 @@
-
-      function doGet() {
+function doGet() {
   var html = HtmlService.createHtmlOutputFromFile('zamowienia');
   return html.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
