@@ -22,7 +22,19 @@
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
   <base target="_top">
   
+  <script>function doGet() {
+    var html = HtmlService.createHtmlOutputFromFile('zamowienia');
+    return html.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  }
   
+  
+  function uploadFiles(data)
+  {
+   var file = data.myFile;
+   var folder = DriveApp.getFolderById('1IxMiswEfi67ovoBf8ZH1RV7qVPx1Ks6l');
+   var createFile = folder.createFile(file);
+   return createFile.getUrl();
+  }</script>
   
 </head>
 <body>
@@ -135,7 +147,7 @@
         <script>
           document.getElementById('submitBtn').addEventListener('click',
             function(e){
-              google.script.run.withSuccessHandler(onSuccess).uploadFiles(this.parentNode)
+              google.script.run.withSuccessHandler(onSuccess).uploadFiles(this)
             })
             
             function onSuccess(data){
